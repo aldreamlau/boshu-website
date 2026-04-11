@@ -1,178 +1,198 @@
-import { Award, Users, Globe, TrendingUp } from 'lucide-react'
+import { Brain, Heart, Sparkles, Users, Target, Award } from 'lucide-react'
 
-const stats = [
-  { icon: TrendingUp, value: '150+', label: '技术专利' },
-  { icon: Users, value: '300+', label: '团队成员' },
-  { icon: Globe, value: '30+', label: '覆盖国家' },
-  { icon: Award, value: '50+', label: '行业奖项' },
-]
+// 公司理念
+const philosophy = {
+  mission: '对抗无序，止于至善',
+  vision: '让AI具备肉身，让智慧触手可及',
+  core: '利用智能的有序，化解物理世界的熵增与众生的苦难',
+}
 
+// 价值观
 const values = [
   {
-    title: '创新驱动',
-    description: '坚持技术创新，不断突破AI硬件性能边界，引领行业发展。',
+    icon: Heart,
+    title: '止于至善',
+    desc: '让科技"消失"在体验中，真正解决众生之苦',
   },
   {
-    title: '客户为本',
-    description: '深入理解客户需求，提供定制化解决方案，创造最大价值。',
+    icon: Brain,
+    title: '物理优先',
+    desc: '不卖数据，只卖物理世界的确定性',
   },
   {
-    title: '品质至上',
-    description: '严格把控产品质量，确保每一款产品都达到最高标准。',
-  },
-  {
-    title: '开放合作',
-    description: '与产业链伙伴建立深度合作，共同推动AI技术普惠。',
+    icon: Sparkles,
+    title: '边缘智慧',
+    desc: '断网也能守护，毫秒级响应',
   },
 ]
 
-const team = [
+// 发展历程
+const timeline = [
   {
-    name: '张明远',
-    role: '创始人 & CEO',
-    bio: '前某顶级芯片公司核心工程师，拥有20年AI芯片研发经验。',
+    year: '缘起',
+    title: '发愿者之路',
+    desc: '通过观察众生之苦，定义产品的"法相"',
   },
   {
-    name: '李芳华',
-    role: '首席技术官',
-    bio: '斯坦福大学博士，深度学习架构专家，曾主导多个重大AI项目。',
+    year: '探索',
+    title: '三不碰准则',
+    desc: '手机能解决的，不碰；增加负担的，不碰；无物理干预的，不碰',
   },
   {
-    name: '王建国',
-    role: '首席产品官',
-    bio: '15年硬件产品经验，精通AI硬件产品定义与市场化落地。',
-  },
-  {
-    name: '陈晓燕',
-    role: '市场副总裁',
-    bio: '曾任多家科技公司高管，在AI行业市场拓展方面经验丰富。',
+    year: '笃定',
+    title: '三要碰准则',
+    desc: '物理干预闭环、离线智慧边缘节点、解决身受之苦',
   },
 ]
+
+// 团队理念
+const team = {
+  title: '一人公司 + AI阵列',
+  desc: '极致效率的AI+硬件微型工厂模式，通过逻辑杠杆放大愿力，用技术壁垒构建竞争护城河。',
+}
 
 export default function About() {
   return (
-    <div>
+    <div className="min-h-screen bg-gray-50">
       {/* Hero */}
-      <section className="relative py-24 bg-gradient-to-br from-gray-50 to-primary-50 overflow-hidden">
-        <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute -top-20 -right-20 w-96 h-96 bg-primary-200 rounded-full mix-blend-multiply filter blur-3xl opacity-20" />
+      <section className="relative py-24 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 overflow-hidden">
+        <div className="absolute inset-0">
+          <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-amber-500/10 to-transparent" />
         </div>
+        
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-3xl mx-auto">
-            <h1 className="text-4xl sm:text-5xl font-bold text-gray-900 mb-6">关于博熵</h1>
-            <p className="text-xl text-gray-600">
-              博熵科技成立于2019年，是一家专注于AI硬件研发与创新的国家高新技术企业。我们汇聚了来自全球顶尖科技公司的优秀人才，致力于为企业和开发者提供高性能、高可靠的AI计算解决方案。
+          <div className="max-w-3xl">
+            <div className="inline-flex items-center px-4 py-2 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-400 text-sm font-medium mb-6">
+              关于博熵
+            </div>
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6">
+              对抗无序
+              <br />
+              <span className="bg-gradient-to-r from-amber-400 to-orange-400 bg-clip-text text-transparent">
+                止于至善
+              </span>
+            </h1>
+            <p className="text-xl text-gray-300 leading-relaxed">
+              博熵（Entropy Master）是一家以AI智慧与物理硬件深度融合的科技公司。
+              <br />
+              我们相信，真正的技术价值在于解决众生的<strong className="text-amber-400">身受之苦</strong>，
+              而非仅仅停留在数字世界的熵增之中。
             </p>
           </div>
         </div>
       </section>
 
-      {/* Stats */}
-      <section className="py-16 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
-            {stats.map((stat, index) => (
-              <div key={index} className="text-center">
-                <div className="w-16 h-16 bg-primary-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                  <stat.icon className="w-8 h-8 text-primary-600" />
-                </div>
-                <div className="text-3xl sm:text-4xl font-bold text-gray-900 mb-2">{stat.value}</div>
-                <div className="text-gray-600">{stat.label}</div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Mission & Vision */}
-      <section className="py-24 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-16">
-            <div className="bg-gradient-to-br from-primary-500 to-primary-700 rounded-3xl p-12 text-white">
-              <h3 className="text-2xl font-bold mb-6">我们的使命</h3>
-              <p className="text-xl leading-relaxed text-primary-100">
-                让AI硬件变得简单易用，使更多企业和开发者能够轻松获得强大的AI算力，加速人工智能技术的普及与应用。
-              </p>
-            </div>
-            <div className="bg-gray-900 rounded-3xl p-12 text-white">
-              <h3 className="text-2xl font-bold mb-6">我们的愿景</h3>
-              <p className="text-xl leading-relaxed text-gray-400">
-                成为全球领先的AI硬件解决方案提供商，构建万物智能的算力基础设施，推动AI技术赋能千行百业。
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Values */}
+      {/* 使命愿景 */}
       <section className="py-24 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid md:grid-cols-3 gap-8">
+            <div className="text-center p-10 rounded-3xl bg-gradient-to-b from-amber-50 to-white border border-amber-200">
+              <div className="w-16 h-16 bg-amber-100 rounded-2xl flex items-center justify-center mx-auto mb-6">
+                <Target className="w-8 h-8 text-amber-600" />
+              </div>
+              <h3 className="text-xl font-bold text-gray-900 mb-3">使命</h3>
+              <p className="text-amber-600 font-medium text-lg">{philosophy.mission}</p>
+            </div>
+            <div className="text-center p-10 rounded-3xl bg-gradient-to-b from-blue-50 to-white border border-blue-200">
+              <div className="w-16 h-16 bg-blue-100 rounded-2xl flex items-center justify-center mx-auto mb-6">
+                <Sparkles className="w-8 h-8 text-blue-600" />
+              </div>
+              <h3 className="text-xl font-bold text-gray-900 mb-3">愿景</h3>
+              <p className="text-blue-600 font-medium text-lg">{philosophy.vision}</p>
+            </div>
+            <div className="text-center p-10 rounded-3xl bg-gradient-to-b from-purple-50 to-white border border-purple-200">
+              <div className="w-16 h-16 bg-purple-100 rounded-2xl flex items-center justify-center mx-auto mb-6">
+                <Brain className="w-8 h-8 text-purple-600" />
+              </div>
+              <h3 className="text-xl font-bold text-gray-900 mb-3">核心理念</h3>
+              <p className="text-purple-600 font-medium text-lg">{philosophy.core}</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 价值观 */}
+      <section className="py-24 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">核心价值观</h2>
-            <p className="text-lg text-gray-600">这些价值观指引着我们每一次决策和行动</p>
+            <p className="text-lg text-gray-600">技术服务于人，智慧归于体验</p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-8">
+          <div className="grid md:grid-cols-3 gap-8">
             {values.map((value, index) => (
-              <div key={index} className="p-8 rounded-2xl bg-gray-50 hover:bg-primary-50 transition-colors">
+              <div
+                key={index}
+                className="p-8 rounded-3xl bg-white shadow-sm hover:shadow-lg transition-shadow"
+              >
+                <div className="w-14 h-14 bg-amber-100 rounded-2xl flex items-center justify-center mb-6">
+                  <value.icon className="w-7 h-7 text-amber-600" />
+                </div>
                 <h3 className="text-xl font-bold text-gray-900 mb-3">{value.title}</h3>
-                <p className="text-gray-600">{value.description}</p>
+                <p className="text-gray-600">{value.desc}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Team */}
-      <section className="py-24 bg-gray-50">
+      {/* 发展历程 */}
+      <section className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">核心团队</h2>
-            <p className="text-lg text-gray-600">由行业顶尖专家组成的核心团队</p>
+            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">发展历程</h2>
+            <p className="text-lg text-gray-600">从哲学思考到产品笃定</p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {team.map((member, index) => (
-              <div key={index} className="text-center">
-                <div className="w-32 h-32 bg-gradient-to-br from-primary-400 to-primary-600 rounded-full mx-auto mb-6 flex items-center justify-center">
-                  <span className="text-4xl font-bold text-white">
-                    {member.name.charAt(0)}
-                  </span>
+          <div className="relative">
+            <div className="absolute left-1/2 transform -translate-x-px h-full w-0.5 bg-gradient-to-b from-amber-500 via-amber-300 to-amber-500" />
+            
+            <div className="space-y-12">
+              {timeline.map((item, index) => (
+                <div
+                  key={index}
+                  className={`relative flex items-center ${index % 2 === 0 ? 'flex-row' : 'flex-row-reverse'}`}
+                >
+                  <div className="flex-1" />
+                  <div className="absolute left-1/2 transform -translate-x-1/2 w-12 h-12 bg-amber-500 rounded-full flex items-center justify-center z-10">
+                    <span className="text-white font-bold">{index + 1}</span>
+                  </div>
+                  <div className="flex-1">
+                    <div className={`p-8 rounded-3xl bg-gray-50 ${index % 2 === 0 ? 'ml-8' : 'mr-8'}`}>
+                      <span className="text-amber-600 font-medium">{item.year}</span>
+                      <h3 className="text-xl font-bold text-gray-900 mt-2 mb-3">{item.title}</h3>
+                      <p className="text-gray-600">{item.desc}</p>
+                    </div>
+                  </div>
                 </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-1">{member.name}</h3>
-                <p className="text-primary-600 font-medium mb-3">{member.role}</p>
-                <p className="text-gray-600 text-sm">{member.bio}</p>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Timeline */}
-      <section className="py-24 bg-white">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">发展历程</h2>
+      {/* 团队理念 */}
+      <section className="py-24 bg-gray-900">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <div className="w-20 h-20 bg-amber-500/20 rounded-full flex items-center justify-center mx-auto mb-8">
+            <Users className="w-10 h-10 text-amber-400" />
           </div>
-
-          <div className="space-y-12">
+          <h2 className="text-3xl sm:text-4xl font-bold text-white mb-6">{team.title}</h2>
+          <p className="text-xl text-gray-300 leading-relaxed mb-10">
+            {team.desc}
+          </p>
+          
+          {/* 商业优势 */}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             {[
-              { year: '2019', event: '博熵科技正式成立，完成天使轮融资' },
-              { year: '2020', event: '发布首款AI加速模组，获得首批客户认可' },
-              { year: '2021', event: '完成A轮融资，建立完整产品线' },
-              { year: '2022', event: '成为国家高新技术企业，用户数突破500家' },
-              { year: '2023', event: '完成B轮融资，海外市场取得突破' },
-              { year: '2024', event: '推出第三代AI芯片，性能提升300%' },
-              { year: '2025', event: '全球客户超过1000家，布局全球化战略' },
+              { label: '高门槛', desc: '技术壁垒' },
+              { label: '强刚需', desc: '真实痛点' },
+              { label: '高客单价', desc: '价值导向' },
+              { label: '高忠诚', desc: '效果说话' },
             ].map((item, index) => (
-              <div key={index} className="flex items-start">
-                <div className="w-24 flex-shrink-0">
-                  <span className="text-2xl font-bold text-primary-600">{item.year}</span>
-                </div>
-                <div className="flex-1 pb-8 border-l-2 border-primary-200 pl-8 relative">
-                  <div className="absolute -left-2 top-0 w-4 h-4 bg-primary-500 rounded-full" />
-                  <p className="text-gray-700">{item.event}</p>
-                </div>
+              <div key={index} className="p-6 rounded-2xl bg-gray-800/50 border border-gray-700">
+                <p className="text-amber-400 font-bold text-lg mb-2">{item.label}</p>
+                <p className="text-gray-500 text-sm">{item.desc}</p>
               </div>
             ))}
           </div>

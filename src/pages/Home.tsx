@@ -1,209 +1,278 @@
 import { Link } from 'react-router-dom'
-import { ArrowRight, Cpu, Shield, Zap, Users } from 'lucide-react'
+import { ArrowRight, Brain, ShieldCheck, VolumeX, Eye, Sparkles, Heart, Zap } from 'lucide-react'
 
-const features = [
+// 博熵核心理念
+const philosophy = {
+  mission: '对抗无序，止于至善',
+  vision: '让AI具备肉身，让智慧触手可及',
+  core: '利用智能的有序，化解物理世界的熵增与众生的苦难',
+}
+
+// 三不碰准则
+const notTouchRules = [
+  '手机屏幕能解决的，不碰',
+  '增加用户数据记录负担的，不碰',
+  '没有物理干预能力的，不碰',
+]
+
+// 三要碰准则
+const mustTouchRules = [
+  '具备"物理干预"能力的反馈闭环',
+  '具备"离线智慧"的边缘节点',
+  '解决"身受之苦"的交互革命',
+]
+
+// 三大产品方向
+const directions = [
   {
-    icon: Cpu,
-    title: '高性能算力',
-    description: '采用最新AI芯片架构，提供卓越的深度学习计算性能',
+    icon: Heart,
+    name: '解脱苦',
+    problem: '重复性、高强度的物理劳动力耗损',
+    solution: 'AI动力增强工具 / 智能护具',
+    color: 'from-amber-500 to-orange-500',
   },
   {
-    icon: Shield,
-    title: '安全可靠',
-    description: '端到端数据加密，多重安全认证，保障您的数据安全',
+    icon: ShieldCheck,
+    name: '守护苦',
+    problem: '不便佩戴设备时的物理意外',
+    solution: '非视觉传感器守护节点',
+    color: 'from-blue-500 to-cyan-500',
   },
   {
-    icon: Zap,
-    title: '低功耗设计',
-    description: '先进的功耗优化技术，显著降低运营成本',
-  },
-  {
-    icon: Users,
-    title: '定制化服务',
-    description: '根据客户需求提供硬件定制和软件集成解决方案',
+    icon: VolumeX,
+    name: '沉浸苦',
+    problem: '城市噪音、过敏原、注意力分散',
+    solution: '主动物理环境调节器',
+    color: 'from-purple-500 to-pink-500',
   },
 ]
 
-const products = [
+// 技术优势
+const techAdvantages = [
   {
-    name: 'AI加速服务器',
-    desc: '专为数据中心设计的高性能计算平台',
+    icon: Brain,
+    title: '边缘智能',
+    desc: '本地决策，毫秒级响应，断网也能守护',
   },
   {
-    name: '边缘AI盒子',
-    desc: '轻量级边缘计算设备，支持本地AI推理',
+    icon: Zap,
+    title: '物理干预',
+    desc: '从"监测"到"行动"的闭环，不卖数据卖确定性',
   },
   {
-    name: 'AI模组',
-    desc: '嵌入式AI计算模组，快速赋能各类设备',
+    icon: Sparkles,
+    title: '无感交互',
+    desc: '让科技"消失"在体验中，止于至善',
   },
 ]
 
 export default function Home() {
   return (
     <div>
-      {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center overflow-hidden bg-gradient-to-br from-gray-50 via-white to-primary-50">
-        {/* Background decoration */}
+      {/* Hero Section - 品牌宣言 */}
+      <section className="relative min-h-screen flex items-center overflow-hidden bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900">
+        {/* 背景装饰 - 熵增视觉效果 */}
         <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute -top-40 -right-40 w-80 h-80 bg-primary-200 rounded-full mix-blend-multiply filter blur-3xl opacity-30" />
-          <div className="absolute top-40 -left-40 w-80 h-80 bg-blue-200 rounded-full mix-blend-multiply filter blur-3xl opacity-30" />
+          <div className="absolute -top-1/2 -right-1/2 w-full h-full bg-gradient-to-br from-amber-500/10 to-transparent rounded-full blur-3xl animate-pulse" />
+          <div className="absolute -bottom-1/2 -left-1/2 w-full h-full bg-gradient-to-tr from-blue-500/10 to-transparent rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }} />
         </div>
 
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
-            <div>
-              <div className="inline-flex items-center px-4 py-2 rounded-full bg-primary-50 text-primary-700 text-sm font-medium mb-6">
-                <span className="w-2 h-2 bg-primary-500 rounded-full mr-2" />
-                AI硬件解决方案领导者
-              </div>
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight mb-6">
-                让AI硬件
-                <br />
-                <span className="text-gradient bg-clip-text text-transparent bg-gradient-to-r from-primary-500 to-primary-700">
-                  赋能千行百业
-                </span>
-              </h1>
-              <p className="text-xl text-gray-600 mb-8 max-w-lg">
-                博熵科技致力于研发高性能AI硬件产品，为企业数字化转型和智能化升级提供强有力的算力支撑。
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4">
-                <Link
-                  to="/products"
-                  className="inline-flex items-center justify-center px-8 py-4 bg-gray-900 text-white font-semibold rounded-full hover:bg-gray-800 transition-colors"
-                >
-                  了解产品
-                  <ArrowRight className="ml-2 w-5 h-5" />
-                </Link>
-                <Link
-                  to="/contact"
-                  className="inline-flex items-center justify-center px-8 py-4 border-2 border-gray-200 text-gray-700 font-semibold rounded-full hover:border-gray-300 transition-colors"
-                >
-                  联系我们
-                </Link>
-              </div>
+          <div className="text-center">
+            {/* 使命宣言 */}
+            <div className="inline-flex items-center px-6 py-3 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-400 text-sm font-medium mb-8">
+              <span className="w-2 h-2 bg-amber-400 rounded-full mr-2 animate-pulse" />
+              Entropy Master · 博熵
             </div>
+            
+            <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight">
+              对抗无序
+              <br />
+              <span className="bg-gradient-to-r from-amber-400 via-orange-400 to-amber-400 bg-clip-text text-transparent">
+                止于至善
+              </span>
+            </h1>
+            
+            <p className="text-xl sm:text-2xl text-gray-300 mb-8 max-w-3xl mx-auto leading-relaxed">
+              利用智能的有序，化解物理世界的熵增与众生的苦难
+              <br />
+              <span className="text-amber-400">让AI具备肉身，让智慧触手可及</span>
+            </p>
 
-            {/* Hero Visual */}
-            <div className="relative hidden lg:block">
-              <div className="relative w-full aspect-square">
-                <div className="absolute inset-0 bg-gradient-to-br from-primary-500 to-primary-700 rounded-3xl transform rotate-6" />
-                <div className="absolute inset-0 bg-gradient-to-br from-primary-400 to-primary-600 rounded-3xl transform -rotate-3 flex items-center justify-center">
-                  <div className="w-48 h-48 bg-white/20 rounded-2xl backdrop-blur-sm flex items-center justify-center">
-                    <Cpu className="w-24 h-24 text-white" />
-                  </div>
-                </div>
-              </div>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link
+                to="/products"
+                className="inline-flex items-center justify-center px-8 py-4 bg-gradient-to-r from-amber-500 to-orange-500 text-white font-semibold rounded-full hover:from-amber-600 hover:to-orange-600 transition-all transform hover:scale-105"
+              >
+                探索产品方向
+                <ArrowRight className="ml-2 w-5 h-5" />
+              </Link>
+              <Link
+                to="/about"
+                className="inline-flex items-center justify-center px-8 py-4 border-2 border-gray-600 text-gray-300 font-semibold rounded-full hover:border-amber-500 hover:text-amber-400 transition-colors"
+              >
+                了解更多
+              </Link>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Features Section */}
-      <section className="py-24 bg-white">
+      {/* 三不碰/三要碰准则 */}
+      <section className="py-24 bg-gray-900">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid lg:grid-cols-2 gap-12">
+            {/* 三不碰 */}
+            <div className="bg-gray-800/50 rounded-3xl p-10 border border-gray-700">
+              <div className="flex items-center mb-8">
+                <div className="w-12 h-12 bg-red-500/20 rounded-xl flex items-center justify-center mr-4">
+                  <Eye className="w-6 h-6 text-red-400" />
+                </div>
+                <h3 className="text-2xl font-bold text-white">三不碰准则</h3>
+              </div>
+              <ul className="space-y-4">
+                {notTouchRules.map((rule, index) => (
+                  <li key={index} className="flex items-start">
+                    <span className="w-8 h-8 bg-red-500/20 rounded-lg flex items-center justify-center mr-4 mt-0.5 flex-shrink-0">
+                      <span className="text-red-400 text-sm font-bold">{index + 1}</span>
+                    </span>
+                    <span className="text-gray-400 text-lg">{rule}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* 三要碰 */}
+            <div className="bg-gray-800/50 rounded-3xl p-10 border border-amber-500/30">
+              <div className="flex items-center mb-8">
+                <div className="w-12 h-12 bg-amber-500/20 rounded-xl flex items-center justify-center mr-4">
+                  <Zap className="w-6 h-6 text-amber-400" />
+                </div>
+                <h3 className="text-2xl font-bold text-white">三要碰准则</h3>
+              </div>
+              <ul className="space-y-4">
+                {mustTouchRules.map((rule, index) => (
+                  <li key={index} className="flex items-start">
+                    <span className="w-8 h-8 bg-amber-500/20 rounded-lg flex items-center justify-center mr-4 mt-0.5 flex-shrink-0">
+                      <span className="text-amber-400 text-sm font-bold">{index + 1}</span>
+                    </span>
+                    <span className="text-gray-300 text-lg">{rule}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 三大产品方向 */}
+      <section className="py-24 bg-gray-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">为什么选择博熵</h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              我们专注于AI硬件领域，以技术创新驱动产品升级，为客户提供全方位解决方案
+            <h2 className="text-4xl font-bold text-white mb-4">产品方向</h2>
+            <p className="text-xl text-gray-400 max-w-2xl mx-auto">
+              基于对众生之苦的深刻洞察，定义产品的"法相"
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {features.map((feature, index) => (
+          <div className="grid md:grid-cols-3 gap-8">
+            {directions.map((dir, index) => (
               <div
                 key={index}
-                className="group p-8 rounded-2xl bg-gray-50 hover:bg-primary-50 transition-colors duration-300"
+                className="group bg-gray-900 rounded-3xl overflow-hidden border border-gray-700 hover:border-transparent transition-all duration-300 hover:scale-105"
               >
-                <div className="w-14 h-14 bg-primary-100 group-hover:bg-primary-200 rounded-2xl flex items-center justify-center mb-6 transition-colors">
-                  <feature.icon className="w-7 h-7 text-primary-600" />
+                <div className={`h-2 bg-gradient-to-r ${dir.color}`} />
+                <div className="p-8">
+                  <div className={`w-16 h-16 bg-gradient-to-br ${dir.color} rounded-2xl flex items-center justify-center mb-6`}>
+                    <dir.icon className="w-8 h-8 text-white" />
+                  </div>
+                  <h3 className="text-2xl font-bold text-white mb-4">{dir.name}</h3>
+                  <div className="mb-6">
+                    <p className="text-sm text-gray-500 mb-2">解决的问题</p>
+                    <p className="text-gray-300">{dir.problem}</p>
+                  </div>
+                  <div>
+                    <p className="text-sm text-gray-500 mb-2">产品形态</p>
+                    <p className="text-amber-400 font-medium">{dir.solution}</p>
+                  </div>
                 </div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-3">{feature.title}</h3>
-                <p className="text-gray-600">{feature.description}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Products Preview */}
-      <section className="py-24 bg-gray-50">
+      {/* 技术优势 */}
+      <section className="py-24 bg-gray-900">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
-            <div>
-              <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-6">核心产品系列</h2>
-              <p className="text-lg text-gray-600 mb-8">
-                从云端到边缘，从服务器到终端设备，博熵科技提供完整的AI硬件产品矩阵，满足不同场景的计算需求。
-              </p>
-              <div className="space-y-6">
-                {products.map((product, index) => (
-                  <div key={index} className="flex items-start space-x-4">
-                    <div className="w-10 h-10 bg-primary-100 rounded-xl flex items-center justify-center flex-shrink-0">
-                      <Cpu className="w-5 h-5 text-primary-600" />
-                    </div>
-                    <div>
-                      <h4 className="font-semibold text-gray-900 mb-1">{product.name}</h4>
-                      <p className="text-gray-600">{product.desc}</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-              <Link
-                to="/products"
-                className="inline-flex items-center mt-8 text-primary-600 font-semibold hover:text-primary-700"
-              >
-                查看全部产品
-                <ArrowRight className="ml-2 w-5 h-5" />
-              </Link>
-            </div>
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold text-white mb-4">技术理念</h2>
+            <p className="text-xl text-gray-400">
+              边缘智能 · 物理干预 · 无感交互
+            </p>
+          </div>
 
-            <div className="relative">
-              <div className="grid grid-cols-2 gap-4">
-                <div className="space-y-4">
-                  <div className="bg-gradient-to-br from-primary-400 to-primary-600 rounded-2xl p-8 aspect-square flex items-center justify-center">
-                    <Cpu className="w-20 h-20 text-white" />
-                  </div>
-                  <div className="bg-gray-900 rounded-2xl p-8 aspect-square flex items-center justify-center">
-                    <div className="text-white text-center">
-                      <div className="text-4xl font-bold">99.9%</div>
-                      <div className="text-gray-400">运行稳定性</div>
-                    </div>
-                  </div>
+          <div className="grid md:grid-cols-3 gap-8">
+            {techAdvantages.map((tech, index) => (
+              <div
+                key={index}
+                className="text-center p-8 rounded-3xl bg-gradient-to-b from-gray-800/50 to-transparent border border-gray-700"
+              >
+                <div className="w-20 h-20 bg-amber-500/10 rounded-full flex items-center justify-center mx-auto mb-6">
+                  <tech.icon className="w-10 h-10 text-amber-400" />
                 </div>
-                <div className="space-y-4 pt-8">
-                  <div className="bg-gray-100 rounded-2xl p-8 aspect-square flex items-center justify-center">
-                    <div className="text-center">
-                      <div className="text-4xl font-bold text-gray-900">500+</div>
-                      <div className="text-gray-600">企业客户</div>
-                    </div>
-                  </div>
-                  <div className="bg-gradient-to-br from-gray-800 to-gray-900 rounded-2xl p-8 aspect-square flex items-center justify-center">
-                    <div className="text-white text-center">
-                      <div className="text-4xl font-bold">24/7</div>
-                      <div className="text-gray-400">技术支持</div>
-                    </div>
-                  </div>
-                </div>
+                <h3 className="text-xl font-bold text-white mb-3">{tech.title}</h3>
+                <p className="text-gray-400">{tech.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 商业模式 */}
+      <section className="py-24 bg-gradient-to-b from-gray-900 to-gray-800">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 className="text-3xl font-bold text-white mb-8">价值公式</h2>
+          <div className="bg-gray-800/50 rounded-3xl p-10 border border-amber-500/30">
+            <p className="text-2xl sm:text-3xl text-white font-mono mb-6">
+              <span className="text-amber-400">熵减</span> = <span className="text-blue-400">愿力</span> × <span className="text-purple-400">逻辑杠杆</span> / <span className="text-red-400">物理阻力</span>
+            </p>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+              <div>
+                <p className="text-amber-400 font-bold">愿力</p>
+                <p className="text-gray-500 text-sm">老板洞察</p>
+              </div>
+              <div>
+                <p className="text-blue-400 font-bold">逻辑杠杆</p>
+                <p className="text-gray-500 text-sm">AI阵列</p>
+              </div>
+              <div>
+                <p className="text-purple-400 font-bold">逻辑杠杆</p>
+                <p className="text-gray-500 text-sm">一人公司</p>
+              </div>
+              <div>
+                <p className="text-red-400 font-bold">物理阻力</p>
+                <p className="text-gray-500 text-sm">硬件实现</p>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-24 bg-gradient-to-r from-primary-600 to-primary-700">
+      {/* CTA */}
+      <section className="py-24 bg-gradient-to-r from-amber-600 to-orange-600">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl sm:text-4xl font-bold text-white mb-6">
-            准备好开启AI硬件之旅了吗？
+            与博熵一起，对抗无序
           </h2>
-          <p className="text-xl text-primary-100 mb-8">
-            联系我们，获取专业的AI硬件解决方案咨询
+          <p className="text-xl text-amber-100 mb-8">
+            让AI具备肉身，让智慧触手可及
           </p>
           <Link
             to="/contact"
-            className="inline-flex items-center px-8 py-4 bg-white text-primary-600 font-semibold rounded-full hover:bg-primary-50 transition-colors"
+            className="inline-flex items-center px-8 py-4 bg-white text-amber-600 font-semibold rounded-full hover:bg-gray-100 transition-colors"
           >
-            立即咨询
+            联系我们
             <ArrowRight className="ml-2 w-5 h-5" />
           </Link>
         </div>

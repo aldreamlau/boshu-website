@@ -1,222 +1,204 @@
-import { Cpu, Server, Box, Layers, ArrowRight, Check } from 'lucide-react'
-import { Link } from 'react-router-dom'
+import { Heart, ShieldCheck, VolumeX, Cpu, Wifi, Battery, ArrowRight, CheckCircle } from 'lucide-react'
 
-const products = [
+// 三大产品方向
+const directions = [
   {
-    icon: Server,
-    name: 'AI加速服务器',
-    category: '云端计算',
-    description: '专为数据中心和云计算场景设计的高性能AI服务器，提供强大的深度学习训练和推理能力。',
-    features: ['单精度浮点性能 100 TFLOPS', '支持多卡互联', 'PCIe 5.0 高速互联', '液冷散热方案', '7x24 稳定运行'],
-    highlight: true,
+    id: 'liberation',
+    icon: Heart,
+    name: '解脱苦',
+    tagline: 'AI动力增强 · 智能护具',
+    problem: '重复性、高强度的物理劳动力耗损',
+    solution: '通过AI动力增强系统，将智能算法与物理执行器深度融合，为体力劳动者提供"第二双手"，让他们从重复劳动中解脱。',
+    features: [
+      '智能动力辅助',
+      '姿态实时矫正',
+      '疲劳度监测',
+      '自适应力量增强',
+    ],
+    color: 'from-amber-500 to-orange-500',
+    bgColor: 'bg-amber-50',
+    borderColor: 'border-amber-200',
   },
   {
-    icon: Box,
-    name: '边缘AI盒子',
-    category: '边缘计算',
-    description: '轻量级边缘计算设备，支持本地AI推理，低延迟、高隐私，适用于各种边缘场景。',
-    features: ['INT8算力 50 TOPS', '小巧便携设计', '支持主流深度学习框架', '丰富接口扩展', '本地数据处理'],
-    highlight: false,
+    id: 'protection',
+    icon: ShieldCheck,
+    name: '守护苦',
+    tagline: '非视觉传感器 · 全时守护',
+    problem: '不便佩戴设备时的物理意外',
+    solution: '在智能手表、手机无法覆盖的场景中，提供隐形的全时守护。无需穿戴，无感陪伴，关键时刻挺身而出。',
+    features: [
+      '非视觉感知',
+      '离线AI判断',
+      '毫秒级响应',
+      '隐私保护优先',
+    ],
+    color: 'from-blue-500 to-cyan-500',
+    bgColor: 'bg-blue-50',
+    borderColor: 'border-blue-200',
   },
   {
-    icon: Cpu,
-    name: 'AI计算模组',
-    category: '嵌入式',
-    description: '高性能嵌入式AI计算模组，功耗低、尺寸小，可快速集成到各类智能设备中。',
-    features: ['超低功耗设计', '标准接口定义', '完整SDK支持', '灵活定制服务', '量产级品质'],
-    highlight: false,
-  },
-  {
-    icon: Layers,
-    name: 'AI开发套件',
-    category: '开发工具',
-    description: '包含硬件模组、开发板、调试工具和完整SDK的一站式开发平台，助力快速原型开发。',
-    features: ['完整的开发环境', '丰富的示例代码', '技术文档支持', '社区交流平台', '专家在线支持'],
-    highlight: false,
+    id: 'immersion',
+    icon: VolumeX,
+    name: '沉浸苦',
+    tagline: '主动环境调节 · 沉浸体验',
+    problem: '城市噪音、过敏原、注意力分散',
+    solution: '不是被动隔绝，而是主动调节。智能感知环境状态，主动创造属于你的"静谧空间"，让你在任何环境中都能保持专注与舒适。',
+    features: [
+      '主动降噪系统',
+      '环境过敏原过滤',
+      '智能光线调节',
+      '注意力守护',
+    ],
+    color: 'from-purple-500 to-pink-500',
+    bgColor: 'bg-purple-50',
+    borderColor: 'border-purple-200',
   },
 ]
 
-const solutions = [
+// 技术架构
+const techStack = [
   {
-    title: '智慧城市',
-    description: '为城市管理、公共安全、交通优化等场景提供AI算力支持',
+    icon: Cpu,
+    title: '边缘AI芯片',
+    desc: '自研边缘AI推理芯片，本地决策，隐私安全',
   },
   {
-    title: '智能制造',
-    description: '赋能工业质检、预测性维护、柔性生产等制造场景',
+    icon: Wifi,
+    title: '离线智慧',
+    desc: '断网也能工作，不依赖云端，响应更及时',
   },
   {
-    title: '智慧医疗',
-    description: '支持医学影像分析、辅助诊断、药物研发等医疗应用',
-  },
-  {
-    title: '自动驾驶',
-    description: '为车载计算、感知融合、决策规划提供强大算力',
-  },
-  {
-    title: '智慧金融',
-    description: '支持风险控制、智能投顾、反欺诈等金融场景',
-  },
-  {
-    title: '教育培训',
-    description: '为AI教学、实验平台、竞赛训练提供基础设施',
+    icon: Battery,
+    title: '超低功耗',
+    desc: '先进功耗管理，一周以上超长续航',
   },
 ]
 
 export default function Products() {
   return (
-    <div>
+    <div className="min-h-screen bg-gray-50">
       {/* Hero */}
-      <section className="relative py-24 bg-gradient-to-br from-gray-50 to-primary-50 overflow-hidden">
-        <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute -bottom-20 -left-20 w-96 h-96 bg-blue-200 rounded-full mix-blend-multiply filter blur-3xl opacity-20" />
+      <section className="relative py-24 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 overflow-hidden">
+        <div className="absolute inset-0">
+          <div className="absolute bottom-0 left-0 w-full h-1/2 bg-gradient-to-t from-amber-500/5 to-transparent" />
         </div>
+        
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto">
-            <h1 className="text-4xl sm:text-5xl font-bold text-gray-900 mb-6">产品与服务</h1>
-            <p className="text-xl text-gray-600">
-              博熵科技提供完整的AI硬件产品矩阵，覆盖云端、边缘、嵌入式三大场景，满足不同行业的算力需求。
+            <div className="inline-flex items-center px-4 py-2 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-400 text-sm font-medium mb-6">
+              产品方向
+            </div>
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6">
+              基于苦谛
+              <br />
+              <span className="bg-gradient-to-r from-amber-400 to-orange-400 bg-clip-text text-transparent">
+                定义法相
+              </span>
+            </h1>
+            <p className="text-xl text-gray-300">
+              通过深入观察众生之苦，我们定义了三大产品方向：
+              <br />
+              每一款产品都致力于解决一个真实的物理世界痛点
             </p>
           </div>
         </div>
       </section>
 
-      {/* Products Grid */}
-      <section className="py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-8">
-            {products.map((product, index) => (
-              <div
-                key={index}
-                className={`rounded-3xl p-8 ${
-                  product.highlight
-                    ? 'bg-gradient-to-br from-primary-500 to-primary-700 text-white'
-                    : 'bg-gray-50'
-                }`}
-              >
-                <div className="flex items-center justify-between mb-6">
-                  <div
-                    className={`w-16 h-16 rounded-2xl flex items-center justify-center ${
-                      product.highlight ? 'bg-white/20' : 'bg-primary-100'
-                    }`}
-                  >
-                    <product.icon
-                      className={`w-8 h-8 ${product.highlight ? 'text-white' : 'text-primary-600'}`}
-                    />
-                  </div>
-                  <span
-                    className={`px-4 py-1 rounded-full text-sm font-medium ${
-                      product.highlight ? 'bg-white/20 text-white' : 'bg-primary-100 text-primary-700'
-                    }`}
-                  >
-                    {product.category}
-                  </span>
+      {/* 三大产品方向 */}
+      {directions.map((direction, index) => (
+        <section
+          key={direction.id}
+          id={direction.id}
+          className={`py-24 ${direction.bgColor}`}
+        >
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className={`grid lg:grid-cols-2 gap-16 items-center ${index % 2 === 1 ? 'lg:flex-row-reverse' : ''}`}>
+              <div className={index % 2 === 1 ? 'lg:order-2' : ''}>
+                <div className={`inline-flex items-center px-4 py-2 rounded-full ${direction.bgColor} border ${direction.borderColor} text-sm font-medium mb-6`}>
+                  <direction.icon className="w-4 h-4 mr-2" />
+                  方向 {index + 1}
                 </div>
-                <h3 className="text-2xl font-bold mb-4">{product.name}</h3>
-                <p className={`mb-6 ${product.highlight ? 'text-primary-100' : 'text-gray-600'}`}>
-                  {product.description}
+                <h2 className="text-4xl font-bold text-gray-900 mb-2">{direction.name}</h2>
+                <p className={`text-xl font-medium bg-gradient-to-r ${direction.color} bg-clip-text text-transparent mb-6`}>
+                  {direction.tagline}
                 </p>
-                <ul className="space-y-3 mb-8">
-                  {product.features.map((feature, fIndex) => (
-                    <li key={fIndex} className="flex items-center">
-                      <Check
-                        className={`w-5 h-5 mr-3 ${
-                          product.highlight ? 'text-white' : 'text-primary-600'
-                        }`}
-                      />
-                      <span className={product.highlight ? 'text-primary-100' : 'text-gray-700'}>
-                        {feature}
-                      </span>
-                    </li>
+                
+                <div className="bg-white rounded-2xl p-6 border ${direction.borderColor} mb-8">
+                  <p className="text-sm text-gray-500 mb-2">解决的问题</p>
+                  <p className="text-gray-700 font-medium">{direction.problem}</p>
+                </div>
+                
+                <p className="text-lg text-gray-600 mb-8 leading-relaxed">
+                  {direction.solution}
+                </p>
+                
+                <div className="grid grid-cols-2 gap-4">
+                  {direction.features.map((feature, i) => (
+                    <div key={i} className="flex items-center">
+                      <CheckCircle className={`w-5 h-5 bg-gradient-to-r ${direction.color} rounded-full mr-3 flex-shrink-0`} />
+                      <span className="text-gray-700">{feature}</span>
+                    </div>
                   ))}
-                </ul>
-                <Link
-                  to="/contact"
-                  className={`inline-flex items-center font-semibold ${
-                    product.highlight
-                      ? 'text-white hover:text-primary-100'
-                      : 'text-primary-600 hover:text-primary-700'
-                  }`}
-                >
-                  咨询详情
-                  <ArrowRight className="ml-2 w-5 h-5" />
-                </Link>
+                </div>
               </div>
-            ))}
+              
+              <div className={`${index % 2 === 1 ? 'lg:order-1' : ''}`}>
+                <div className={`bg-gradient-to-br ${direction.color} rounded-3xl p-12 aspect-square flex items-center justify-center`}>
+                  <div className="text-center text-white">
+                    <direction.icon className="w-24 h-24 mx-auto mb-6 opacity-90" />
+                    <p className="text-2xl font-bold">{direction.name}</p>
+                    <p className="text-white/80 mt-2">{direction.tagline}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      ))}
 
-      {/* Solutions */}
-      <section className="py-24 bg-gray-50">
+      {/* 技术架构 */}
+      <section className="py-24 bg-gray-900">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">行业解决方案</h2>
-            <p className="text-lg text-gray-600">深耕多行业场景，提供端到端AI硬件解决方案</p>
+            <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">技术架构</h2>
+            <p className="text-lg text-gray-400">
+              三大核心技术支撑，构筑产品竞争力
+            </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {solutions.map((solution, index) => (
+          <div className="grid md:grid-cols-3 gap-8">
+            {techStack.map((tech, index) => (
               <div
                 key={index}
-                className="group p-8 rounded-2xl bg-white hover:shadow-xl transition-shadow duration-300 cursor-pointer"
+                className="p-8 rounded-3xl bg-gray-800/50 border border-gray-700 hover:border-amber-500/50 transition-colors"
               >
-                <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-primary-600 transition-colors">
-                  {solution.title}
-                </h3>
-                <p className="text-gray-600">{solution.description}</p>
+                <div className="w-16 h-16 bg-amber-500/10 rounded-2xl flex items-center justify-center mb-6">
+                  <tech.icon className="w-8 h-8 text-amber-400" />
+                </div>
+                <h3 className="text-xl font-bold text-white mb-3">{tech.title}</h3>
+                <p className="text-gray-400">{tech.desc}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Services */}
-      <section className="py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
-            <div>
-              <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-6">全方位服务支持</h2>
-              <p className="text-lg text-gray-600 mb-8">
-                除了优质的产品，博熵科技还提供完善的技术服务，帮助客户快速部署和优化AI应用。
-              </p>
-
-              <div className="space-y-6">
-                {[
-                  { title: '技术支持', desc: '7x24小时专业技术支持，快速响应客户需求' },
-                  { title: '定制开发', desc: '根据客户特定需求，提供硬件和软件定制服务' },
-                  { title: '培训服务', desc: '提供产品使用培训和AI开发培训课程' },
-                  { title: '运维保障', desc: '提供设备运维、固件升级、性能优化等服务' },
-                ].map((service, index) => (
-                  <div key={index} className="flex items-start">
-                    <div className="w-12 h-12 bg-primary-100 rounded-xl flex items-center justify-center flex-shrink-0">
-                      <Check className="w-6 h-6 text-primary-600" />
-                    </div>
-                    <div className="ml-4">
-                      <h4 className="font-semibold text-gray-900 mb-1">{service.title}</h4>
-                      <p className="text-gray-600">{service.desc}</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            <div className="relative">
-              <div className="bg-gradient-to-br from-primary-500 to-primary-700 rounded-3xl p-12 text-white">
-                <h3 className="text-2xl font-bold mb-6">获取专属方案</h3>
-                <p className="text-primary-100 mb-8">
-                  告诉我们您的需求，我们的专家团队将为您提供最适合的AI硬件解决方案。
-                </p>
-                <Link
-                  to="/contact"
-                  className="inline-flex items-center px-6 py-3 bg-white text-primary-600 font-semibold rounded-full hover:bg-primary-50 transition-colors"
-                >
-                  立即咨询
-                  <ArrowRight className="ml-2 w-5 h-5" />
-                </Link>
-              </div>
-            </div>
-          </div>
+      {/* CTA */}
+      <section className="py-24 bg-gradient-to-r from-amber-600 to-orange-600">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 className="text-3xl sm:text-4xl font-bold text-white mb-6">
+            期待与志同道合者同行
+          </h2>
+          <p className="text-xl text-amber-100 mb-8">
+            如果你也在思考如何用技术解决真实的人间疾苦，欢迎联系我们
+          </p>
+          <a
+            href="#contact"
+            className="inline-flex items-center px-8 py-4 bg-white text-amber-600 font-semibold rounded-full hover:bg-gray-100 transition-colors"
+          >
+            联系我们
+            <ArrowRight className="ml-2 w-5 h-5" />
+          </a>
         </div>
       </section>
     </div>
