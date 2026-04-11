@@ -144,7 +144,7 @@ export default function Layout() {
             <div>
               <h3 className="text-sm font-semibold uppercase tracking-wider mb-4">联系我们</h3>
               <ul className="space-y-3 text-gray-400">
-                <li>邮箱: contact@entropy.master</li>
+                <li>邮箱: contact@entropymaster.io</li>
                 <li>微信: EntropyMaster</li>
                 <li className="text-sm">添加请备注"博熵"</li>
               </ul>

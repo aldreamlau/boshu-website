@@ -26,7 +26,7 @@ const contactInfo = [
   {
     icon: Mail,
     label: '邮箱',
-    value: 'contact@entropy.master',
+    value: 'contact@entropymaster.io',
     desc: '商务合作 / 技术交流',
   },
   {
